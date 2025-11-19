@@ -7,6 +7,7 @@ from litellm import completion, completion_cost
 from litellm.caching.caching import Cache
 from litellm.main import ModelResponse, Usage
 from loguru import logger
+from litellm.utils import trim_messages
 
 from tau2.config import (
     DEFAULT_LLM_CACHE_TYPE,
@@ -208,7 +209,7 @@ def generate(
     try:
         response = completion(
             model=model,
-            messages=litellm_messages,
+            messages=trim_messages(litellm_messages, model, max_tokens=kwargs.get("max_tokens")),
             tools=tools,
             tool_choice=tool_choice,
             **kwargs,
