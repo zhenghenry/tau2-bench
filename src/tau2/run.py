@@ -35,7 +35,9 @@ litellm.model_alias_map = {
 }
 litellm.register_model({
     "/checkpoints/iter_0041723_reasoning": {
-        "max_tokens": 20480,
+        "max_input_tokens": 10240,
+        "max_output_tokens": 22528,        
+        "max_tokens": 32768,
         "input_cost_per_token": 0.0,
         "output_cost_per_token": 0.0,
         "litellm_provider": "openai",
