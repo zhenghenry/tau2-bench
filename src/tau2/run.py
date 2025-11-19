@@ -28,6 +28,23 @@ from tau2.utils.display import ConsoleDisplay, Text
 from tau2.utils.pydantic_utils import get_pydantic_hash
 from tau2.utils.utils import DATA_DIR, get_commit_hash, get_now, show_dict_diff
 
+import litellm
+# Add SMOE model to litellm
+litellm.model_alias_map = {
+    "smoe": "openai//checkpoints/iter_0041723_reasoning"
+}
+litellm.register_model({
+    "/checkpoints/iter_0041723_reasoning": {
+        "max_tokens": 20480,
+        "input_cost_per_token": 0.0,
+        "output_cost_per_token": 0.0,
+        "litellm_provider": "openai",
+        "mode": "chat",
+    }
+})
+
+
+# litellm._turn_on_debug()
 
 def get_options() -> RegistryInfo:
     """

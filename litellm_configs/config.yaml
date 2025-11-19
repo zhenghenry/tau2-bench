@@ -1,0 +1,7 @@
+model_list:
+  - model_name: smoe
+    litellm_params:
+      model: /checkpoints/iter_0041723_reasoning
+      custom_llm_provider: openai
+      api_base: http://localhost:8000/v1
+      api_key: asdf1324
