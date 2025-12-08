@@ -31,7 +31,8 @@ from tau2.utils.utils import DATA_DIR, get_commit_hash, get_now, show_dict_diff
 import litellm
 # Add SMOE model to litellm
 litellm.model_alias_map = {
-    "smoe": "openai//checkpoints/iter_0041723_reasoning"
+    "smoe": "openai//checkpoints/iter_0041723_reasoning",
+    "qwen3": "openai/Qwen/Qwen3-4B-Thinking-2507"
 }
 litellm.register_model({
     "/checkpoints/iter_0041723_reasoning": {
@@ -42,8 +43,18 @@ litellm.register_model({
         "output_cost_per_token": 0.0,
         "litellm_provider": "openai",
         "mode": "chat",
-    }
-})
+    }, 
+    "Qwen/Qwen3-4B-Thinking-2507": {
+        "max_input_tokens": 10240,
+        "max_output_tokens": 22528,        
+        "max_tokens": 32768,
+        "input_cost_per_token": 0.0,
+        "output_cost_per_token": 0.0,
+        "litellm_provider": "openai",
+        "mode": "chat",
+    }    
+}
+)
 
 
 # litellm._turn_on_debug()
